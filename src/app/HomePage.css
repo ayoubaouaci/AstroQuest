@@ -1,0 +1,429 @@
+/* HomePage.css - تصميم بكسل آرت لواجهة التسجيل */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.pixel-registration {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    background: #0a0a2a;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+/* خلفية بكسل آرت */
+.pixel-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        /* شبكة البكسل */
+        linear-gradient(rgba(157, 78, 221, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(157, 78, 221, 0.1) 1px, transparent 1px),
+        /* خلفية كونية */
+        linear-gradient(45deg, #0a0a2a 0%, #1a0033 100%);
+    background-size: 32px 32px, 32px 32px, 100% 100%;
+    z-index: 1;
+}
+
+/* النجوم المتحركة */
+.pixel-stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+        radial-gradient(2px 2px at 40px 70px, #fff, transparent),
+        radial-gradient(2px 2px at 60px 20px, #9d4edd, transparent),
+        radial-gradient(3px 3px at 90px 40px, #ff6b6b, transparent),
+        radial-gradient(2px 2px at 120px 80px, #4ecdc4, transparent);
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    animation: starsMove 20s linear infinite;
+    z-index: 2;
+    opacity: 0.6;
+}
+
+@keyframes starsMove {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 200px 200px;
+    }
+}
+
+/* الحاوية الرئيسية */
+.registration-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    z-index: 10;
+}
+
+/* العنوان */
+.pixel-title {
+    text-align: center;
+    margin: 40px 0;
+    padding: 20px;
+    border: 4px solid #9d4edd;
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: 8px 8px 0 #000;
+    position: relative;
+}
+
+.pixel-title h1 {
+    font-size: 2.5rem;
+    margin: 0 0 20px 0;
+    color: #9d4edd;
+    text-shadow: 3px 3px 0 #000;
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: #ffd166;
+    margin: 0;
+    text-shadow: 2px 2px 0 #000;
+}
+
+/* بطاقة التسجيل */
+.pixel-card {
+    background: rgba(0, 0, 0, 0.85);
+    border: 6px solid #4ecdc4;
+    padding: 30px;
+    margin: 20px 0;
+    box-shadow: 12px 12px 0 #000;
+    position: relative;
+}
+
+/* تأثير حدود متقطع */
+.pixel-card::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    right: -12px;
+    bottom: -12px;
+    border: 4px dashed rgba(157, 78, 221, 0.3);
+    z-index: -1;
+}
+
+/* النموذج */
+.pixel-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* المجموعات */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.pixel-label {
+    font-size: 0.9rem;
+    color: #4ecdc4;
+    text-shadow: 2px 2px 0 #000;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* حقول الإدخال */
+.pixel-input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 3px solid #9d4edd;
+    padding: 12px;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;
+    outline: none;
+    transition: all 0.2s;
+    box-shadow: inset 4px 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+.pixel-input:focus {
+    border-color: #ffd166;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: inset 4px 4px 0 rgba(0, 0, 0, 0.3), 0 0 0 3px rgba(255, 209, 102, 0.2);
+}
+
+.pixel-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* حقول التاريخ */
+.date-inputs {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.date-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.date-label {
+    font-size: 0.7rem;
+    color: #ffd166;
+    text-align: center;
+    text-shadow: 1px 1px 0 #000;
+}
+
+.date-input {
+    text-align: center;
+    font-size: 0.9rem;
+    padding: 10px;
+}
+
+/* الصف المزدوج */
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+/* زر الإرسال */
+.pixel-button {
+    position: relative;
+    background: linear-gradient(45deg, #9d4edd, #7209b7);
+    border: none;
+    padding: 20px;
+    margin: 30px 0;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 4px solid #ffd166;
+    box-shadow: 8px 8px 0 #000;
+    overflow: hidden;
+}
+
+.pixel-button:hover {
+    transform: translate(4px, 4px);
+    box-shadow: 4px 4px 0 #000;
+    background: linear-gradient(45deg, #7209b7, #9d4edd);
+}
+
+.pixel-button:active {
+    transform: translate(8px, 8px);
+    box-shadow: 0px 0px 0 #000;
+}
+
+.button-text {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.1rem;
+    color: white;
+    text-shadow: 2px 2px 0 #000;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 2;
+}
+
+.button-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.pixel-button:hover .button-glow {
+    opacity: 1;
+}
+
+/* التذييل */
+.pixel-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.pixel-line {
+    width: 100%;
+    height: 2px;
+    background: repeating-linear-gradient(90deg,
+            transparent,
+            transparent 8px,
+            #9d4edd 8px,
+            #9d4edd 16px);
+}
+
+.footer-text {
+    font-size: 0.7rem;
+    color: #ff6b6b;
+    text-align: center;
+    text-shadow: 1px 1px 0 #000;
+}
+
+/* العناصر الزخرفية */
+.pixel-decoration {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.pixel-planet {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle at 15px 15px, #ff6b6b, #9d4edd);
+    border-radius: 0;
+    animation: planetSpin 20s linear infinite;
+    box-shadow: 4px 4px 0 #000;
+}
+
+@keyframes planetSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.pixel-satellite {
+    position: absolute;
+    top: 70%;
+    left: 15%;
+    width: 20px;
+    height: 20px;
+    background: #4ecdc4;
+    animation: satelliteOrbit 15s linear infinite;
+    box-shadow: 2px 2px 0 #000;
+}
+
+@keyframes satelliteOrbit {
+    0% {
+        transform: rotate(0deg) translateX(100px) rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg) translateX(100px) rotate(-360deg);
+    }
+}
+
+.pixel-comet {
+    position: absolute;
+    top: 30%;
+    left: 5%;
+    width: 40px;
+    height: 4px;
+    background: linear-gradient(90deg, #ffd166, transparent);
+    animation: cometFly 10s linear infinite;
+}
+
+@keyframes cometFly {
+    0% {
+        transform: translateX(-100px) translateY(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(100vw) translateY(100px);
+        opacity: 0;
+    }
+}
+
+/* ============ RESPONSIVE DESIGN ============ */
+@media (max-width: 768px) {
+    .registration-container {
+        padding: 10px;
+    }
+
+    .pixel-title h1 {
+        font-size: 1.8rem;
+    }
+
+    .subtitle {
+        font-size: 0.8rem;
+    }
+
+    .pixel-card {
+        padding: 20px;
+        border-width: 4px;
+        box-shadow: 8px 8px 0 #000;
+    }
+
+    .date-inputs {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .pixel-button {
+        padding: 15px;
+    }
+
+    .button-text {
+        font-size: 0.9rem;
+    }
+
+    .pixel-planet {
+        width: 40px;
+        height: 40px;
+        top: 5%;
+        right: 5%;
+    }
+
+    .pixel-satellite {
+        display: none;
+        /* إخفاء على الموبايل للأداء */
+    }
+}
+
+@media (max-width: 480px) {
+    .pixel-title h1 {
+        font-size: 1.5rem;
+    }
+
+    .pixel-label {
+        font-size: 0.7rem;
+    }
+
+    .pixel-input {
+        font-size: 0.7rem;
+        padding: 10px;
+    }
+
+    .button-text {
+        font-size: 0.8rem;
+    }
+}

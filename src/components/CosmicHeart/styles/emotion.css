@@ -1,0 +1,210 @@
+/* /app/components/CosmicHeart/styles/emotion.css */
+.emotion-layers {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    filter: var(--filter-effect);
+}
+
+.emotion-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+/* Base Pulse */
+.base-pulse {
+    background: radial-gradient(circle at center,
+            hsl(var(--hue-rotate), 100%, 70%) 0%,
+            transparent 70%);
+    opacity: calc(var(--glow-intensity) * 0.5);
+    animation: pulse var(--pulse-speed) infinite ease-in-out;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: calc(var(--glow-intensity) * 0.5);
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: var(--glow-intensity);
+    }
+}
+
+/* Aura */
+.aura {
+    background: conic-gradient(from 0deg,
+            transparent,
+            hsl(var(--hue-rotate), 100%, 60%),
+            transparent);
+    opacity: 0.1;
+    animation: rotate-aura calc(var(--rotation-speed) * 20s) infinite linear;
+}
+
+@keyframes rotate-aura {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Inner Glow */
+.inner-glow {
+    background: radial-gradient(circle at center,
+            white 0%,
+            hsl(var(--hue-rotate), 100%, 80%) 30%,
+            transparent 70%);
+    opacity: 0.2;
+    mix-blend-mode: screen;
+}
+
+/* Rays */
+.rays {
+    background: conic-gradient(from 0deg,
+            transparent 0deg,
+            rgba(255, 255, 255, 0.3) 15deg,
+            transparent 30deg);
+    opacity: 0.4;
+    animation: rotate-rays calc(var(--rotation-speed) * 10s) infinite linear;
+}
+
+@keyframes rotate-rays {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Cosmic Rings */
+.cosmic-rings {
+    border: 1px solid hsl(var(--hue-rotate), 100%, 70%);
+    opacity: 0.3;
+    animation:
+        expand-ring 3s infinite ease-out,
+        fade-ring 3s infinite ease-in-out;
+    border-radius: 50%;
+    position: absolute;
+    inset: 0;
+}
+
+.cosmic-rings:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.cosmic-rings:nth-child(3) {
+    animation-delay: 2s;
+}
+
+@keyframes expand-ring {
+    from {
+        transform: scale(0.8);
+    }
+
+    to {
+        transform: scale(1.5);
+    }
+}
+
+@keyframes fade-ring {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+}
+
+/* Star Dust */
+.star-dust {
+    background-image:
+        radial-gradient(circle at 20% 20%, white 1px, transparent 2px),
+        radial-gradient(circle at 80% 30%, white 1px, transparent 2px),
+        radial-gradient(circle at 40% 70%, white 1px, transparent 2px);
+    background-size: 100% 100%;
+    opacity: 0.5;
+    animation: twinkle 2s infinite alternate;
+    position: absolute;
+    inset: 0;
+}
+
+@keyframes twinkle {
+    from {
+        opacity: 0.3;
+    }
+
+    to {
+        opacity: 0.7;
+    }
+}
+
+/* Pulse Patterns */
+[style*="smooth"] .base-pulse {
+    animation-timing-function: ease-in-out;
+}
+
+[style*="staggered"] .base-pulse {
+    animation: staggered-pulse var(--pulse-speed) infinite;
+}
+
+@keyframes staggered-pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: calc(var(--glow-intensity) * 0.3);
+    }
+
+    25% {
+        transform: scale(1.02);
+        opacity: calc(var(--glow-intensity) * 0.6);
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: var(--glow-intensity);
+    }
+
+    75% {
+        transform: scale(1.02);
+        opacity: calc(var(--glow-intensity) * 0.6);
+    }
+}
+
+[style*="wave"] .base-pulse {
+    animation: wave-pulse var(--pulse-speed) infinite;
+}
+
+@keyframes wave-pulse {
+    0% {
+        transform: scale(1);
+        opacity: calc(var(--glow-intensity) * 0.5);
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: var(--glow-intensity);
+    }
+
+    100% {
+        transform: scale(0.95);
+        opacity: calc(var(--glow-intensity) * 0.3);
+    }
+}

@@ -1,0 +1,44 @@
+/* /app/components/CosmicHeart/styles/crack.css */
+
+.crack-overlay-container {
+    pointer-events: none;
+    mix-blend-mode: screen; /* Helps with the glowing look */
+}
+
+/* Base Gradients & Filters */
+#neon-crack-gradient stop {
+    transition: stop-color 0.5s ease;
+}
+
+/* Glow Filters */
+/* Intense, tight glow for the core of the cracks */
+#glow-realism feGaussianBlur {
+    transition: stdDeviation 0.5s ease;
+}
+
+/* Particles */
+.particles-container {
+    perspective: 1000px;
+}
+
+/* Remove old legacy classes that might cause artifacts */
+.crack-aura, .crack-hole, .crack-energy {
+    display: none;
+}
+
+/* Utility to ensure hardware acceleration */
+.crack-overlay-container * {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+}
+
+/* Stage-specific enhancements (controlled via JS class or inline styles usually, but here for backup) */
+.stage-5-portal {
+    filter: drop-shadow(0 0 15px rgba(225, 100, 255, 0.8));
+}
+
+/* Text / Symbol Styling */
+.zodiac-symbol-container {
+    font-family: 'Cinzel', serif; /* Ensure a nice font if available, fallback to serif */
+    text-shadow: 0 0 10px rgba(138, 43, 226, 0.8);
+}

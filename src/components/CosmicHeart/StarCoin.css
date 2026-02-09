@@ -1,0 +1,309 @@
+/* /app/components/CosmicHeart/StarCoin.css */
+.star-coin {
+    position: absolute;
+    width: var(--star-size);
+    height: var(--star-size);
+    transform-origin: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    pointer-events: auto;
+}
+
+.star-coin:hover {
+    filter: brightness(1.5) drop-shadow(0 0 20px var(--star-color));
+}
+
+.star-coin.collecting {
+    pointer-events: none;
+}
+
+/* Timer */
+.star-timer {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    opacity: 0.7;
+}
+
+.timer-svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.timer-progress {
+    transition: stroke-dashoffset 1s linear;
+}
+
+/* Core Star */
+.star-core {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.star-ray {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    transform-origin: left center;
+}
+
+.ray-inner {
+    position: absolute;
+    width: 30%;
+    height: 100%;
+    background: linear-gradient(to right,
+            var(--star-color),
+            rgba(255, 255, 255, 0.8));
+    border-radius: 1px;
+}
+
+.ray-outer {
+    position: absolute;
+    left: 30%;
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(to right,
+            rgba(255, 255, 255, 0.8),
+            transparent);
+    border-radius: 1px;
+}
+
+/* Center */
+.star-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40%;
+    height: 40%;
+    background: radial-gradient(circle at center,
+            white 0%,
+            var(--star-color) 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+        0 0 20px white,
+        inset 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.center-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    border-radius: inherit;
+    filter: blur(5px);
+    opacity: 0.6;
+}
+
+.star-value {
+    font-size: calc(var(--star-size) * 0.3);
+    font-weight: bold;
+    color: black;
+    text-shadow: 0 0 2px white;
+    position: relative;
+    z-index: 2;
+}
+
+/* Halo */
+.star-halo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(var(--star-size) * 2.5);
+    height: calc(var(--star-size) * 2.5);
+    background: radial-gradient(circle at center,
+            var(--star-color) 0%,
+            transparent 70%);
+    transform: translate(-50%, -50%);
+    filter: blur(var(--star-glow));
+    opacity: 0.4;
+    z-index: -1;
+    animation: halo-pulse 2s ease-in-out infinite;
+}
+
+@keyframes halo-pulse {
+
+    0%,
+    100% {
+        opacity: 0.4;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+/* Sparks */
+.star-sparks {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(var(--star-size) * 3);
+    height: calc(var(--star-size) * 3);
+    transform: translate(-50%, -50%);
+}
+
+.spark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 10px;
+    background: linear-gradient(to bottom,
+            transparent,
+            white,
+            transparent);
+    transform-origin: center calc(var(--star-size) * 0.8);
+    opacity: 0;
+    animation: sparkle 1.5s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: translateY(0) scale(0.5);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: translateY(-5px) scale(1);
+    }
+}
+
+/* Collecting Effect */
+.collect-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.collect-particle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4px;
+    height: 4px;
+    background: var(--star-color);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: collect-burst 0.6s ease-out forwards;
+}
+
+@keyframes collect-burst {
+    0% {
+        opacity: 1;
+        transform:
+            translate(-50%, -50%) rotate(var(--particle-angle, 0deg)) translateX(0) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translate(-50%, -50%) rotate(var(--particle-angle, 0deg)) translateX(calc(var(--star-size) * 1.5)) scale(0);
+    }
+}
+
+/* Tooltip */
+.star-tooltip {
+    position: absolute;
+    top: -45px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    z-index: 1001;
+}
+
+.star-tooltip.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.tooltip-text {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.tooltip-value {
+    color: var(--star-color);
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* Edge Effect */
+.star-coin::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg,
+            var(--star-color),
+            transparent 30%,
+            transparent 70%,
+            var(--star-color));
+    z-index: -2;
+    animation: border-rotate 3s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.star-coin:hover::before {
+    opacity: 0.5;
+}
+
+@keyframes border-rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Gentle Sway */
+@keyframes gentle-sway {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(var(--collect-scale)) rotate(var(--rotation)) translateY(0);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(var(--collect-scale)) rotate(var(--rotation)) translateY(-5px);
+    }
+}
+
+.star-coin {
+    animation: gentle-sway 3s ease-in-out infinite;
+}

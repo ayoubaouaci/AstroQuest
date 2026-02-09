@@ -1,0 +1,943 @@
+/* Cosmic Compass 2.0 Styles */
+
+/* Container definition moved to Main Compass section */
+
+.user-info-header {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.user-info-header h2 {
+    margin: 0 0 15px 0;
+    color: #ffd700;
+    font-size: 1.5rem;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.birth-info {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.birth-info span {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 8px 16px;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+}
+
+/* Main Compass */
+/* Main Compass */
+.cosmic-compass {
+    position: relative;
+    width: 90vmin;
+    height: 90vmin;
+    max-width: 600px;
+    max-height: 600px;
+    margin: 0 auto;
+    border-radius: 50%;
+    cursor: grab;
+    touch-action: none;
+    transition: transform 0.3s ease;
+    z-index: 10;
+}
+
+/* Container */
+.cosmic-compass-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.cosmic-compass.dragging {
+    cursor: grabbing;
+}
+
+.compass-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle at center,
+            rgba(20, 20, 60, 0.9) 0%,
+            rgba(10, 10, 30, 0.95) 70%,
+            rgba(5, 5, 20, 1) 100%);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+        0 0 80px rgba(100, 100, 255, 0.2),
+        inset 0 0 60px rgba(0, 0, 0, 0.5);
+    position: relative;
+    transition: transform 0.1s linear;
+}
+
+/* Degrees Ring */
+.degrees-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.degree-mark {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 50%;
+    transform-origin: bottom center;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.degree-mark:nth-child(3n) {
+    background: rgba(255, 255, 255, 0.3);
+    width: 2px;
+}
+
+.degree-number {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-90deg);
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.6);
+    white-space: nowrap;
+}
+
+/* Compass Rings */
+.compass-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+
+.zodiac-ring {
+    border: 2px solid rgba(255, 215, 0, 0.3);
+}
+
+.houses-ring {
+    border: 2px solid rgba(78, 205, 196, 0.3);
+}
+
+.ring-segment {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 50%;
+    transform-origin: bottom center;
+}
+
+.segment-content {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.zodiac-label {
+    font-size: 14px;
+    color: #ffd700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.house-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 10px;
+    color: #4ecdc4;
+}
+
+.house-number {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.house-sign {
+    font-size: 9px;
+    opacity: 0.8;
+}
+
+.house-degree {
+    font-size: 8px;
+    opacity: 0.6;
+}
+
+/* Main Axes */
+.main-axes {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 90%;
+    pointer-events: none;
+}
+
+.axis {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right,
+            transparent 0%,
+            rgba(255, 255, 255, 0.2) 10%,
+            rgba(255, 255, 255, 0.4) 50%,
+            rgba(255, 255, 255, 0.2) 90%,
+            transparent 100%);
+}
+
+.axis.horizon {
+    transform: translateY(-50%);
+}
+
+.axis.meridian {
+    transform: translateY(-50%) rotate(90deg);
+}
+
+.axis-label {
+    position: absolute;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 4px 8px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    pointer-events: auto;
+}
+
+.axis-label.east {
+    left: 5px;
+    top: -25px;
+}
+
+.axis-label.west {
+    right: 5px;
+    top: -25px;
+}
+
+.axis-label.north {
+    left: 50%;
+    top: -40px;
+    transform: translateX(-50%);
+}
+
+.axis-label.south {
+    left: 50%;
+    bottom: -40px;
+    transform: translateX(-50%);
+}
+
+/* Angle Points */
+.angle-points {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+}
+
+.angle {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.angle:hover {
+    transform: scale(1.2);
+    z-index: 10;
+}
+
+.angle.asc {
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 107, 107, 0.2);
+    border: 2px solid #ff6b6b;
+    color: #ff6b6b;
+}
+
+.angle.mc {
+    right: -25px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(78, 205, 196, 0.2);
+    border: 2px solid #4ecdc4;
+    color: #4ecdc4;
+}
+
+.angle.desc {
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 209, 102, 0.2);
+    border: 2px solid #ffd166;
+    color: #ffd166;
+}
+
+.angle.ic {
+    left: -25px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(17, 138, 178, 0.2);
+    border: 2px solid #118ab2;
+    color: #118ab2;
+}
+
+.angle-details {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: 10px;
+    margin-top: 5px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 4px 8px;
+    border-radius: 6px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.angle:hover .angle-details {
+    opacity: 1;
+}
+
+/* Compass Center */
+.compass-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    z-index: 10;
+}
+
+.center-circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle at center,
+            rgba(50, 50, 100, 0.8) 0%,
+            rgba(30, 30, 70, 0.9) 100%);
+    border: 3px solid rgba(255, 215, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+        inset 0 0 30px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(255, 215, 0, 0.2);
+}
+
+.inner-center {
+    text-align: center;
+    color: #ffd700;
+}
+
+.earth-symbol {
+    font-size: 32px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.center-text {
+    font-size: 10px;
+    line-height: 1.3;
+}
+
+.coord {
+    font-size: 8px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 3px;
+}
+
+/* Planets Layer */
+.planets-layer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.planet-point {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 36px;
+    height: 36px;
+    margin: -18px 0 0 -18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    pointer-events: auto;
+}
+
+.planet-point:hover,
+.planet-point.selected {
+    transform: scale(1.3) !important;
+    z-index: 20;
+}
+
+.planet-symbol {
+    font-size: 18px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid currentColor;
+    position: relative;
+}
+
+.retrograde-mark {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 12px;
+    color: #ff6b6b;
+}
+
+.planet-info {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: 9px;
+    margin-top: 5px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 3px 6px;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.planet-point:hover .planet-info {
+    opacity: 1;
+}
+
+.planet-name {
+    font-weight: bold;
+}
+
+.planet-position {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Houses Layer */
+.houses-layer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.house-line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 50%;
+    transform-origin: bottom center;
+}
+
+.house-line .line {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top,
+            transparent 0%,
+            rgba(255, 255, 255, 0.1) 30%,
+            rgba(255, 255, 255, 0.3) 100%);
+}
+
+.house-marker {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.8);
+    background: rgba(0, 0, 0, 0.5);
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+.house-number {
+    font-weight: bold;
+    font-size: 11px;
+}
+
+.house-sign-symbol {
+    font-size: 10px;
+    opacity: 0.8;
+}
+
+.house-degree-text {
+    font-size: 8px;
+    opacity: 0.6;
+}
+
+/* Grid Background */
+.grid-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.grid-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+}
+
+.grid-circle:nth-child(1) {
+    width: 20%;
+    height: 20%;
+}
+
+.grid-circle:nth-child(2) {
+    width: 50%;
+    height: 50%;
+}
+
+.grid-circle:nth-child(3) {
+    width: 80%;
+    height: 80%;
+}
+
+.grid-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.grid-line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    transform-origin: center;
+}
+
+/* Controls */
+.compass-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.zoom-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+    border-radius: 25px;
+}
+
+.zoom-controls button {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.zoom-controls button:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.reset-btn,
+.auto-rotate-btn {
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.auto-rotate-btn.active {
+    background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+}
+
+.reset-btn:hover,
+.auto-rotate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(37, 117, 252, 0.3);
+}
+
+/* Info Panel */
+.astro-info-panel {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(20, 20, 40, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 20px;
+    max-width: 300px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+.astro-info-panel .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.astro-info-panel .close-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.planet-symbol-large {
+    font-size: 36px;
+}
+
+.panel-header h3 {
+    margin: 0;
+    color: #ffd700;
+    font-size: 1.2rem;
+}
+
+.panel-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.info-row .label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+.info-row .value {
+    color: #ffd700;
+    font-weight: bold;
+}
+
+.element-balance h4 {
+    color: #4ecdc4;
+    margin: 0 0 15px 0;
+    font-size: 1rem;
+}
+
+.balance-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.balance-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.element-name {
+    width: 60px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.bar-container {
+    flex: 1;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.bar {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+
+.bar-fire {
+    background: linear-gradient(90deg, #ff6b6b, #ff8e53);
+}
+
+.bar-earth {
+    background: linear-gradient(90deg, #4ecdc4, #44a08d);
+}
+
+.bar-air {
+    background: linear-gradient(90deg, #ffd166, #f4a460);
+}
+
+.bar-water {
+    background: linear-gradient(90deg, #118ab2, #06d6a0);
+}
+
+.element-count {
+    width: 30px;
+    text-align: center;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+/* Mobile Quick View */
+.mobile-quick-view {
+    display: none;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.quick-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px 20px;
+    border-radius: 15px;
+    min-width: 120px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.quick-icon {
+    font-size: 24px;
+}
+
+.quick-label {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.quick-value {
+    font-size: 13px;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+/* Loading */
+.compass-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.1);
+    border-top: 5px solid #ffd700;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.error-message {
+    text-align: center;
+    padding: 40px;
+    color: #ff6b6b;
+    font-size: 1.2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .cosmic-compass {
+        width: 95vmin;
+        height: 95vmin;
+    }
+
+    .compass-center {
+        width: 80px;
+        height: 80px;
+    }
+
+    .earth-symbol {
+        font-size: 24px;
+    }
+
+    .center-text {
+        font-size: 8px;
+    }
+
+    .angle {
+        width: 40px;
+        height: 40px;
+        font-size: 12px;
+    }
+
+    .planet-point {
+        width: 30px;
+        height: 30px;
+        margin: -15px 0 0 -15px;
+    }
+
+    .planet-symbol {
+        font-size: 16px;
+    }
+
+    .compass-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .mobile-quick-view {
+        display: flex;
+    }
+
+    .birth-info {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .astro-info-panel {
+        bottom: 10px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .cosmic-compass {
+        width: 90vmin;
+        height: 90vmin;
+    }
+
+    .user-info-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .quick-item {
+        min-width: 100px;
+        padding: 10px 15px;
+    }
+
+    .zodiac-label {
+        font-size: 12px;
+    }
+
+    .degree-number {
+        font-size: 8px;
+    }
+}
+
+/* Touch Improvements */
+@media (hover: none) and (pointer: coarse) {
+    .cosmic-compass {
+        cursor: default;
+    }
+
+    .planet-point:active {
+        transform: scale(1.3) !important;
+    }
+
+    .angle:active {
+        transform: scale(1.2);
+    }
+}

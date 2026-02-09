@@ -1,0 +1,19 @@
+id,title,description,xp,planet,difficulty
+l5_1,Ancient Galaxy: Decode Star Signal,Listen to the frequency of the cosmos for 5 mins,150,Neptune,Hard
+l5_2,Ancient Galaxy: Align Chakras,Visualize the energy of the 7 stars flowing through you,150,Uranus,Hard
+l5_3,Ancient Galaxy: Stardust Harvest,Complete a creative act to generate new matter,150,Venus,Hard
+mercury_1,Mercury: Send a Message,Reach out to someone you haven't spoken to in a while,60,Mercury,Easy
+mercury_2,Mercury: Learn Something New,Read an article or watch a tutorial,60,Mercury,Easy
+mercury_3,Mercury: Write Your Thoughts,Journal for 10 minutes,60,Mercury,Easy
+venus_1,Venus: Admire Art,Spend time appreciating beauty or creativity,120,Venus,Medium
+venus_2,Venus: Practice Self-Care,Do something kind for yourself,120,Venus,Medium
+venus_3,Venus: Express Gratitude,Thank someone or write down 3 things you're grateful for,120,Venus,Medium
+mars_1,Mars: 10m Workout,Get your body moving with exercise,80,Mars,Medium
+mars_2,Mars: Take Action,Complete a task you've been putting off,80,Mars,Medium
+mars_3,Mars: Challenge Yourself,Do something outside your comfort zone,80,Mars,Medium
+jupiter_1,Jupiter: Expand Your Mind,Explore a new perspective or philosophy,140,Jupiter,Hard
+jupiter_2,Jupiter: Be Generous,Help someone or donate to a cause,140,Jupiter,Hard
+jupiter_3,Jupiter: Plan an Adventure,Research a place you'd like to visit,140,Jupiter,Hard
+saturn_1,Saturn: Build Structure,Organize your space or create a schedule,100,Saturn,Hard
+saturn_2,Saturn: Practice Discipline,Stick to a commitment you made,100,Saturn,Hard
+saturn_3,Saturn: Review Progress,Reflect on your long-term goals,100,Saturn,Hard

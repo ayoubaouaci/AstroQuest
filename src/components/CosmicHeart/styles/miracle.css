@@ -1,0 +1,271 @@
+/* /app/components/CosmicHeart/styles/miracle.css */
+.miracle-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+    opacity: calc(var(--miracle-intensity) * var(--phase, 1));
+    transition: opacity 0.5s ease;
+}
+
+/* Flash */
+.miracle-flash {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center,
+            rgba(255, 255, 255, 0.9) 0%,
+            rgba(255, 255, 255, 0.1) 30%,
+            transparent 70%);
+    animation: flash-burst 0.5s ease-out;
+    opacity: 0;
+}
+
+@keyframes flash-burst {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    50% {
+        opacity: calc(var(--miracle-intensity) * 0.8);
+        transform: scale(1.2);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.5);
+    }
+}
+
+/* Aura */
+.miracle-aura {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 80%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle at center,
+            rgba(255, 215, 0, 0.4) 0%,
+            rgba(255, 140, 0, 0.2) 40%,
+            transparent 70%);
+    border-radius: 50%;
+    animation: aura-pulse 2s ease-in-out infinite;
+    filter: blur(10px);
+}
+
+@keyframes aura-pulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+/* Concentric Rings */
+.concentric-rings {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ring {
+    position: absolute;
+    border: 2px solid rgba(255, 215, 0, 0.6);
+    border-radius: 50%;
+    animation: ring-expand 2s ease-out infinite;
+}
+
+.ring:nth-child(1) {
+    width: 60px;
+    height: 60px;
+    margin: -30px 0 0 -30px;
+}
+
+.ring:nth-child(2) {
+    width: 100px;
+    height: 100px;
+    margin: -50px 0 0 -50px;
+}
+
+.ring:nth-child(3) {
+    width: 140px;
+    height: 140px;
+    margin: -70px 0 0 -70px;
+}
+
+@keyframes ring-expand {
+    0% {
+        opacity: 0.8;
+        transform: scale(0.5);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(2);
+    }
+}
+
+/* Star Particles */
+.star-particles {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.star-particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: white;
+    clip-path: polygon(50% 0%,
+            61% 35%,
+            98% 35%,
+            68% 57%,
+            79% 91%,
+            50% 70%,
+            21% 91%,
+            32% 57%,
+            2% 35%,
+            39% 35%);
+    opacity: 0;
+    animation: star-trail 1.5s ease-out infinite;
+}
+
+@keyframes star-trail {
+    0% {
+        opacity: 0;
+        transform:
+            rotate(var(--star-angle, 0deg)) translateX(0) scale(0.5);
+    }
+
+    20% {
+        opacity: 0.9;
+        transform:
+            rotate(var(--star-angle, 0deg)) translateX(calc(var(--star-distance, 30px) * 0.3)) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            rotate(calc(var(--star-angle, 0deg) + 180deg)) translateX(var(--star-distance, 30px)) scale(0);
+    }
+}
+
+/* Inner Symbol */
+.inner-symbol {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+.star-icon {
+    font-size: 32px;
+    color: gold;
+    text-shadow:
+        0 0 10px gold,
+        0 0 20px orange,
+        0 0 30px rgba(255, 215, 0, 0.5);
+    animation: star-spin 3s linear infinite, star-glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes star-spin {
+    from {
+        transform: rotate(0deg) scale(1);
+    }
+
+    to {
+        transform: rotate(360deg) scale(1.1);
+    }
+}
+
+@keyframes star-glow {
+    from {
+        filter: brightness(1) drop-shadow(0 0 5px gold);
+    }
+
+    to {
+        filter: brightness(1.5) drop-shadow(0 0 15px gold);
+    }
+}
+
+/* Energy Waves */
+.energy-waves {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.energy-wave {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle at center,
+            transparent 30%,
+            rgba(255, 215, 0, 0.1) 50%,
+            transparent 70%);
+    border-radius: 50%;
+    opacity: 0;
+    animation: wave-expand 1.6s ease-out infinite;
+}
+
+@keyframes wave-expand {
+    0% {
+        opacity: 0.4;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1.5);
+    }
+}
+
+/* Shake Effect */
+@keyframes miracle-shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translateX(-1px);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translateX(1px);
+    }
+}
+
+.miracle-effect {
+    animation: miracle-shake 0.5s ease-in-out;
+}
