@@ -810,8 +810,10 @@ export default function Home() {
               onInteraction={handleInteraction}
               onStarCollect={collectStarCoin}
               zodiacSymbol={(() => {
-                if (profile?.chart?.chart_points?.sun?.sign) {
-                  const sign = ZODIAC_SIGNS.find(z => z.name === profile.chart!.chart_points!.sun!.sign!)
+                // Cast to any to avoid build errors if type is out of sync on server
+                const safeChart = profile?.chart as any;
+                if (safeChart?.chart_points?.sun?.sign) {
+                  const sign = ZODIAC_SIGNS.find(z => z.name === safeChart.chart_points.sun.sign)
                   return sign ? sign.symbol : "★";
                 }
                 if (profile?.birthDate) {

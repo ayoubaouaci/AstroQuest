@@ -14,6 +14,11 @@ export interface NatalChart {
     sunDegree: number;
     moonDegree: number;
     risingDegree: number;
+    chart_points?: {
+        sun: { sign: string; degree: number; house?: number; influence?: string };
+        moon: { sign: string; degree: number; house?: number; influence?: string };
+        ascendant: { sign: string; degree: number };
+    };
 }
 
 const SIGNS = [
@@ -81,7 +86,12 @@ export function calculateNatalChart(
         risingSign: risingInfo.sign,
         sunDegree: sunInfo.degree,
         moonDegree: moonInfo.degree,
-        risingDegree: risingInfo.degree
+        risingDegree: risingInfo.degree,
+        chart_points: {
+            sun: { sign: sunInfo.sign, degree: sunInfo.degree },
+            moon: { sign: moonInfo.sign, degree: moonInfo.degree },
+            ascendant: { sign: risingInfo.sign, degree: risingInfo.degree }
+        }
     };
 }
 

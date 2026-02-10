@@ -28,7 +28,7 @@ export default function StarItem({ id, x, y, onCollect }: StarItemProps) {
         y: "-40vh", // Fly up
         opacity: [1, 1, 0],
         rotate: 360,
-        transition: { duration: 0.8, ease: "easeInOut" }
+        transition: { duration: 0.8, ease: "easeInOut" as const }
     };
 
     return (

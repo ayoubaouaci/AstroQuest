@@ -13,7 +13,7 @@ interface CosmicRadarProps {
 
 
 export function CosmicRadar({ foundSignals = 0, hasActiveQuests = false, onVoidStrike, onVoidPurge, dangerLevel = 'safe' }: CosmicRadarProps) {
-    const requestRef = useRef<number>();
+    const requestRef = useRef<number | null>(null);
 
     // No Void Entity Logic in this version
 

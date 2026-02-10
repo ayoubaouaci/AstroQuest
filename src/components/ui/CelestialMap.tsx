@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { RenderingEngine } from "@/lib/cosmic-brain/engine-types";
+import { RenderingEngine, AstrologicalEngine } from "@/lib/cosmic-brain/engine-types";
 import { useEffect, useState } from "react";
 
 interface CelestialMapProps {
-    engineData?: RenderingEngine;
+    engineData?: RenderingEngine | AstrologicalEngine;
     className?: string;
 }
 
