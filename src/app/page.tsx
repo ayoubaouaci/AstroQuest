@@ -18,6 +18,7 @@ export default function HomePage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Attempting to save data...");
+    alert("Sending data..."); // Temporary debugging alert
 
     // التحقق من صحة البيانات
     if (!formData.name || !formData.day || !formData.month || !formData.year) {
@@ -26,24 +27,27 @@ export default function HomePage() {
     }
 
     try {
+      // Dynamic import to ensure Firebase is loaded only when needed
       const { collection, addDoc } = await import('firebase/firestore');
       const { db } = await import('@/lib/firebase');
 
-      // حفظ البيانات في Firestore
-      await addDoc(collection(db, "users"), {
+      // حفظ البيانات في Firestore - using 'travelers' collection as requested
+      await addDoc(collection(db, "travelers"), {
         ...formData,
-        createdAt: new Date()
+        createdAt: new Date() // Ensure we have a timestamp
       });
+
       console.log("Data saved successfully!");
+      alert("Success!"); // Success alert
 
       // حفظ البيانات في localStorage
       localStorage.setItem('astroUserData', JSON.stringify(formData));
 
       // الانتقال لشاشة العرافة
       router.push('/ceremony');
-    } catch (error) {
+    } catch (error: any) {
       console.error("Firebase Error:", error);
-      alert("Error saving data. Check console for details.");
+      alert("Error: " + error.message); // Error alert with message
     }
   };
 
