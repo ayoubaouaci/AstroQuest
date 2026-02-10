@@ -15,8 +15,9 @@ export default function HomePage() {
     city: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log("Attempting to save data...");
 
     // التحقق من صحة البيانات
     if (!formData.name || !formData.day || !formData.month || !formData.year) {
@@ -24,11 +25,26 @@ export default function HomePage() {
       return;
     }
 
-    // حفظ البيانات في localStorage
-    localStorage.setItem('astroUserData', JSON.stringify(formData));
+    try {
+      const { collection, addDoc } = await import('firebase/firestore');
+      const { db } = await import('@/lib/firebase');
 
-    // الانتقال لشاشة العرافة
-    router.push('/ceremony');
+      // حفظ البيانات في Firestore
+      await addDoc(collection(db, "users"), {
+        ...formData,
+        createdAt: new Date()
+      });
+      console.log("Data saved successfully!");
+
+      // حفظ البيانات في localStorage
+      localStorage.setItem('astroUserData', JSON.stringify(formData));
+
+      // الانتقال لشاشة العرافة
+      router.push('/ceremony');
+    } catch (error) {
+      console.error("Firebase Error:", error);
+      alert("Error saving data. Check console for details.");
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
